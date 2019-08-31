@@ -1,13 +1,10 @@
 <template>
   <div id="app">
-    <h1>Hello World!</h1>
+    <app-servers></app-servers>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
 </script>
 
 <style>
