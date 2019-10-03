@@ -1,8 +1,8 @@
 <template>
-    <div class="card main bg-light mb-3">
-        <div class="card-body">
-            <div class="card-text">
-                <h2><slot></slot></h2>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body quote">
+                <slot></slot>
             </div>
         </div>
     </div>
@@ -15,18 +15,15 @@
 </script>
 
 <style scoped>
-    .main {
-        border: 1px solid lightgray;
-        border-radius: 5px;
-        max-width: 18rem;
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-block: 1%;
+    .panel-body {
+        font-family: 'Arizonia', sans-serif;
     }
 
-    .card-body {
-        font-family: 'Arizonia', sans-serif;
-        padding-left: 8%;
-        padding-bottom: 5%;
+    .quote {
+        cursor: pointer;
+    }
+
+    .quote:hover {
+        background-color: #ffe2e2;
     }
 </style>

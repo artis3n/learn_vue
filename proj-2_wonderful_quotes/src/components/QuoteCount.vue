@@ -8,37 +8,8 @@
 </template>
 
 <script>
-    import {eventBus} from '../main';
-
     export default {
-        data() {
-            return {
-                count: 0,
-                max: 10
-            }
-        },
-
-        methods: {
-            addQuote(quote) {
-                this.count++;
-                if (this.count > this.max) {
-                    this.count == this.max;
-                    eventBus.$emit("removeQuote", quote.id);
-                }
-            },
-
-            removeQuotes(count) {
-                this.count--;
-                if (this.count < 0) {
-                    this.count = 0;
-                }
-            }
-        },
-
-        created() {
-            eventBus.$on("newQuote", (quote) => this.addQuote(quote))
-            eventBus.$on("removeQuote", () => this.removeQuotes())
-        }
+        props: ['count', 'max'],
     }
 </script>
 

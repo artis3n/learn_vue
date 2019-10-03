@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <div class="row"><app-quote-count></app-quote-count></div>
-        <div class="row"><app-new-quote></app-new-quote></div>
-        <div class="row"><app-quote-list></app-quote-list></div>
+        <div class="row"><app-quote-count :max="maxQuotes" :count="quotes.length"></app-quote-count></div>
+        <div class="row"><app-new-quote @newQuote="newQuote"></app-new-quote></div>
+        <div class="row"><app-quote-list :quotes="quotes" @removeQuote="removeQuote"></app-quote-list></div>
         <div class="row"><app-quote-instructions></app-quote-instructions></div>
     </div>
 </template>
@@ -19,6 +19,25 @@
             appQuoteCount: QuoteCount,
             appNewQuote: NewQuote,
             appQuoteInstructions: QuoteInstructions,
+        },
+
+        data() {
+            return {
+                maxQuotes: 10,
+                quotes: ["This is the first quote"]
+            }
+        },
+
+        methods: {
+            newQuote(quote) {
+                if (this.quotes.length < this.maxQuotes) {
+                    this.quotes.push(quote);
+                }
+            },
+
+            removeQuote(index) {
+                this.quotes.splice(index, 1);
+            }
         }
     }
 </script>
