@@ -32,6 +32,8 @@
             newQuote(quote) {
                 if (this.quotes.length < this.maxQuotes) {
                     this.quotes.push(quote);
+                } else {
+                    return alert('Please delete a quote!');
                 }
             },
 
