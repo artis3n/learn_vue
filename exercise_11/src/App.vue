@@ -11,8 +11,6 @@
                 <p>{{ computedReverse }}</p>
                 <p>{{ computedCount }}</p>
 
-                <!-- Exercise 4 -->
-                <!-- Share the Computed Property rebuilding Exercise 2 via a Mixin -->
                 <hr>
                 <p>Now with a mixin:</p>
                 <p>{{ mixinComputedReverse }}</p>
