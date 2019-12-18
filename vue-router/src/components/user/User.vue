@@ -1,0 +1,24 @@
+<template>
+    <div>
+        <h1>The User Page</h1>
+        <hr>
+        <p>Loaded ID: {{ id }}</p>
+        <button @click="navigateHome" class="btn btn-primary">Go to Home</button>
+    </div>
+
+</template>
+
+<script>
+    export default {
+        props: {
+            id: {
+                type: String
+            },
+        },
+        methods: {
+            navigateHome() {
+                this.$router.push('/');
+            }
+        }
+    }
+</script>
