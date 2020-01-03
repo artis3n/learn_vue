@@ -16,3 +16,7 @@ npm run build
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Vuex Auto-Namespacing
+
+<https://github.com/vuejs/vuex/releases/tag/v2.1.0>
