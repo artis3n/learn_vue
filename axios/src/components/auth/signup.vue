@@ -69,6 +69,8 @@
 </template>
 
 <script>
+  import axios from '../../axios-auth';
+
   export default {
     data () {
       return {
@@ -86,7 +88,7 @@
         const newHobby = {
           id: Math.random() * Math.random() * 1000,
           value: ''
-        }
+        };
         this.hobbyInputs.push(newHobby)
       },
       onDeleteHobby (id) {
@@ -102,7 +104,7 @@
           hobbies: this.hobbyInputs.map(hobby => hobby.value),
           terms: this.terms
         };
-        this.$http.post('users.json', formData)
+        axios.post('users.json', formData)
           .then(response => console.log(response))
           .catch(error => console.log(error));
       }
