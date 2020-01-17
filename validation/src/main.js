@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
+import Vuelidate from 'vuelidate'
 
 import App from './App.vue';
 import router from './router';
@@ -10,6 +11,7 @@ const instance = axios.create({
 });
 
 Vue.prototype.$http = instance;
+Vue.use(Vuelidate);
 
 new Vue({
   el: '#app',
