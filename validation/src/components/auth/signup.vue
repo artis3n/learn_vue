@@ -9,7 +9,7 @@
                   id="email"
                   v-model="email"
                   @input="$v.email.$touch()">
-          <p v-if="!$v.email.email">You must supply a valid email.</p>
+          <p v-if="$v.email.$error">You must supply a valid email.</p>
         </div>
         <div class="input" :class="{ invalid: $v.age.$error }">
           <label for="age">Your Age</label>
@@ -85,6 +85,7 @@
 <script>
   import { mapActions } from 'vuex';
   import { required, email, numeric, minValue, minLength, sameAs, requiredUnless } from 'vuelidate/lib/validators';
+  import axios from 'axios';
 
   export default {
     data () {
@@ -103,6 +104,20 @@
         email: {
             required,
             email,
+            unique: (val) => {
+                if (val === '') return true;
+                return new Promise((resolve, reject) => {
+                    return axios.get('/users.json?orderBy="email"&equalTo="' + val + '"')
+                    .then((res) => {
+                        console.log(res);
+                        return Object.keys(res.data).length === 0;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        return false;
+                    });
+                });
+            },
         },
         age: {
             required,
@@ -158,7 +173,7 @@
         };
 
         this.signup(formData);
-      }
+      },
     }
   }
 </script>

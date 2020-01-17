@@ -5,10 +5,6 @@ import axios from 'axios';
 import authAxios from "./axios-auth";
 import router from "./router";
 
-const instance = axios.create({
-    baseURL: 'https://vue-auth-9a840.firebaseio.com'
-});
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -65,7 +61,7 @@ export default new Vuex.Store({
         },
 
         login({commit, dispatch}, formData) {
-            authAxios.post(':signInWithPassword?key=AIzaSyCmaYhgrgvUaMd5F6UW-XQTU_3muEWVe1I', {
+            authAxios.post(':signInWithPassword?key=AIzaSyCdlle8hV_dp1riRqjiVicpXonGlbNfeBA', {
                 email: formData.email,
                 password: formData.password,
                 returnSecureToken: true,
@@ -120,7 +116,7 @@ export default new Vuex.Store({
             if (!state.idToken) {
                 return;
             }
-            instance.post('/users.json?auth=' + state.idToken, userData)
+            axios.post('/users.json?auth=' + state.idToken, userData)
                 .then(response => console.log(response))
                 .catch(error => console.log(error));
         },
@@ -129,7 +125,7 @@ export default new Vuex.Store({
             if (!state.idToken) {
                 return;
             }
-            instance.get('/users.json?auth=' + state.idToken)
+            axios.get('/users.json?auth=' + state.idToken)
                 .then((response) => {
                     const users = [];
                     for (let key in response.data) {

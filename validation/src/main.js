@@ -6,11 +6,9 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-const instance = axios.create({
-  baseURL: 'https://vue-auth-9a840.firebaseio.com/'
-});
+axios.defaults.baseURL = 'https://vue-auth-9a840.firebaseio.com';
 
-Vue.prototype.$http = instance;
+Vue.prototype.$http = axios;
 Vue.use(Vuelidate);
 
 new Vue({
